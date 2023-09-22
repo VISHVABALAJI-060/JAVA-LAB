@@ -1,0 +1,97 @@
+import java.util.Scanner;
+interface Printable {
+    void print();
+}
+
+class Rectangle implements Printable {
+    private double length;
+    private double breadth;
+    public Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+    public void print() {
+        System.out.println("****RECTANGLE****"); 
+        System.out.println("Length : " + length ); 
+        System.out.println("Breadth : " + breadth); 
+        System.out.println("Area : " + (length * breadth));
+        System.out.println();
+    }
+}
+
+class SportsCar implements Printable {
+    private String brandName;
+    private String model;
+    private double price;
+    public SportsCar(String brandName, String model, double price) {
+        this.brandName = brandName;
+        this.model = model;
+        this.price = price;
+    }
+    public void print() {
+        System.out.println("****SPORTSCAR****"); 
+        System.out.println("Brand : " + brandName); 
+        System.out.println("Model : " + model);
+        System.out.println("Price : Rs. " + price);
+        System.out.println();
+    }
+}
+
+class Manager implements Printable {
+    private String name;
+    private int age;
+    private String employeeID;
+    private double salary;
+
+    public Manager(String name, int age, String employeeID, double salary) {
+        this.name = name;
+        this.age = age;
+        this.employeeID = employeeID;
+        this.salary = salary;
+    }
+
+    @Override
+    public void print() {
+        System.out.println("****MANAGER****");
+        System.out.println("Name : " + name);  
+        System.out.println("Age : " + age); 
+        System.out.println("Employee ID : " + employeeID); 
+        System.out.println("Salary : Rs. " + salary);
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter rectangle length: ");
+        double length = scanner.nextDouble();
+        System.out.print("Enter rectangle breadth: ");
+        double breadth = scanner.nextDouble();
+        System.out.println();
+        System.out.print("Enter sports car brand name: ");
+        String brandName = scanner.next();
+        System.out.print("Enter sports car model: ");
+        String model = scanner.next();
+        System.out.print("Enter sports car price: ");
+        double price = scanner.nextDouble();
+        System.out.println();
+        System.out.print("Enter manager name: ");
+        String managerName = scanner.next();
+        System.out.print("Enter manager age: ");
+        int age = scanner.nextInt();
+        System.out.print("Enter manager employee ID: ");
+        String employeeID = scanner.next();
+        System.out.print("Enter manager salary: ");
+        double salary = scanner.nextDouble();
+        System.out.println();
+        Rectangle rectangle = new Rectangle(length, breadth);
+        SportsCar sportsCar = new SportsCar(brandName, model, price);
+        Manager manager = new Manager(managerName, age, employeeID, salary);
+
+        rectangle.print();
+        sportsCar.print();
+        manager.print();
+    }
+}

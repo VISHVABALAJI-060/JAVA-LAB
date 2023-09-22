@@ -1,0 +1,73 @@
+import java.util.Scanner;
+abstract class Employee 
+{
+    String name;
+    int age;
+    double hourRate;
+    abstract double calcSalary(double hours);
+    public void inputDetails() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Name: ");
+        name = scanner.nextLine();
+        System.out.print("Age: ");
+        age = scanner.nextInt();
+        System.out.print("Hourly Rate: ₹");
+        hourRate = scanner.nextDouble();
+        scanner.nextLine(); 
+    }
+    public String toString() {
+        return "Name: " + name + "\nAge: " + age + "\nHourly Rate: ₹" + hourRate;
+    }
+}
+
+class Manager extends Employee {
+    double hoursWorked;
+    double calcSalary(double hours) {
+        return hourRate * hours;
+    }
+}
+
+class Clerk extends Employee {
+    double hoursWorked;
+    double calcSalary(double hours) {
+        return hourRate * hours;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager manager1 = new Manager();
+        System.out.println("Enter details for Manager 1:");
+        manager1.inputDetails();
+        System.out.print("Enter hours worked for Manager 1: ");
+        manager1.hoursWorked = new Scanner(System.in).nextDouble();
+
+        Manager manager2 = new Manager();
+        System.out.println("\nEnter details for Manager 2:");
+        manager2.inputDetails();
+        System.out.print("Enter hours worked for Manager 2: ");
+        manager2.hoursWorked = new Scanner(System.in).nextDouble();
+
+        Clerk clerk = new Clerk();
+        System.out.println("\nEnter details for Clerk:");
+        clerk.inputDetails();
+        System.out.print("Enter hours worked for Clerk: ");
+        clerk.hoursWorked = new Scanner(System.in).nextDouble();
+
+        double manager1Salary = manager1.calcSalary(manager1.hoursWorked);
+        double manager2Salary = manager2.calcSalary(manager2.hoursWorked);
+        double clerkSalary = clerk.calcSalary(clerk.hoursWorked);
+
+        System.out.println("\nManager 1 Details:");
+        System.out.println(manager1);
+        System.out.println("Calculated Salary: ₹" + manager1Salary);
+
+        System.out.println("\nManager 2 Details:");
+        System.out.println(manager2);
+        System.out.println("Calculated Salary: ₹" + manager2Salary);
+
+        System.out.println("\nClerk Details:");
+        System.out.println(clerk);
+        System.out.println("Calculated Salary: ₹" + clerkSalary);
+    }
+}
