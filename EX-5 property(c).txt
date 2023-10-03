@@ -1,0 +1,26 @@
+package mypackage.pack1;
+class MyClass1 {
+    protected int protectedField = 42;
+    int defaultField = 24;
+}
+
+package mypackage.pack2;
+class MyClass2 {
+    protected int protectedField = 99;
+    int defaultField = 77;
+}
+
+package mypackage.pack3;
+
+//import mypackage.pack1.MyClass1;
+
+class MySubclass extends MyClass1 {
+    public void accessProperties() {
+        int protectedValue = protectedField;
+        System.out.println("Protected Field (from MyClass1): " + protectedValue);
+    }
+    public static void main(String[] args) {
+        MySubclass subclass = new MySubclass();
+        subclass.accessProperties();
+    }
+}
