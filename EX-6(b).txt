@@ -1,0 +1,50 @@
+import java.util.Scanner;
+public class ExceptionHandlingDemo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Handling Arithmetic Exception
+        try {
+            System.out.print("Enter a number: ");
+            int dividend = Integer.parseInt(scanner.nextLine());
+            System.out.print("Enter a divisor: ");
+            int divisor = Integer.parseInt(scanner.nextLine());            
+            int result = dividend / divisor;
+            System.out.println("Result of division: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Number Format Exception: Invalid input. Please enter valid integers.");
+        }
+        
+        // Handling ArrayIndexOutOfBoundsException
+        try {
+            System.out.print("Enter the size of the array: ");
+            int size = Integer.parseInt(scanner.nextLine());            
+            int[] arr = new int[size];
+            System.out.print("Enter an index to access the array: ");
+            int index = Integer.parseInt(scanner.nextLine());            
+            int element = arr[index];
+            System.out.println("Value at index " + index + ": " + element);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out of Bounds Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Number Format Exception: Invalid input. Please enter a valid integer for the index.");
+        }
+       
+        // Handling StringIndexOutOfBoundsException
+        try {
+            System.out.print("Enter a string: ");
+            String inputString = scanner.nextLine();          
+            System.out.print("Enter an index to access the string: ");
+            int index = Integer.parseInt(scanner.nextLine());            
+            char character = inputString.charAt(index);
+            System.out.println("Character at index " + index + ": " + character);
+        } catch (StringIndexOutOfBoundsException e) {
+            System.out.println("String Index Out of Bounds Exception: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Number Format Exception: Invalid input. Please enter a valid integer for the index.");
+        }        
+        scanner.close();
+    }
+}
